@@ -11,7 +11,7 @@ function HotIssueContainer({
     <React.Fragment>
       <section className="my-40">
         <h2 className="text-black mx-4 font-semibold text-2xl sm:mx-48">
-          Hot Issue
+          Category
         </h2>
         <div className="container flex flex-wrap sm:mx-44">
           {categories.length > 0 ? (

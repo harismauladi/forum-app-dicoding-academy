@@ -1,5 +1,6 @@
 import API from "../../utils/api";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
+import showAlert from "../../utils/alert";
 
 const ActionType = {
   SET_AUTH_USER: "SET_AUTH_USER",
