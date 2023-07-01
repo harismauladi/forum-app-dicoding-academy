@@ -1,0 +1,48 @@
+{
+  "name": "my-react-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest --no-watch",
+    "e2e": "cypress run",
+    "ci:test": "vitest run && start-server-and-test start http-get://localhost:5173 e2e"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "flowbite": "^1.6.6",
+    "flowbite-react": "^0.4.9",
+    "html-react-parser": "^4.0.0",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.0",
+    "react-redux-loading-bar": "^5.0.4",
+    "react-router-dom": "^6.13.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.14",
+    "cypress": "^12.16.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-cypress": "^2.13.3",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "jsdom": "^22.1.0",
+    "postcss": "^8.4.24",
+    "start-server-and-test": "^2.0.0",
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.3.9",
+    "vitest": "^0.32.2"
+  }
+}
