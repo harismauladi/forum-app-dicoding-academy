@@ -35,7 +35,7 @@ function AddThreadInput() {
             type="text"
             id="title"
             name="title"
-            className=" max-w-md shadow appearance-none border rounded w-full py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-lg sm:text-xl placeholder:text-[8px] sm:py-3 sm:px-2 sm:placeholder:text-sm sm:text-[10px]"
+            className=" max-w-[23rem] sm:max-w-md shadow appearance-none border rounded w-full py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-lg sm:text-xl placeholder:text-[8px] sm:py-3 sm:px-2 sm:placeholder:text-sm sm:text-[10px]"
             value={title}
             onChange={titleHandler}
             required
@@ -50,7 +50,7 @@ function AddThreadInput() {
             type="text"
             id="title"
             name="title"
-            className=" max-w-md shadow appearance-none border rounded w-full py-1 px-2 text-gray-700 leading-tight sm:text-xl focus:outline-none focus:shadow-outline text-lg placeholder:text-[8px] sm:py-3 sm:px-2 sm:placeholder:text-sm sm:text-[10px]"
+            className=" max-w-[23rem] sm:max-w-md shadow appearance-none border rounded w-full py-1 px-2 text-gray-700 leading-tight sm:text-xl focus:outline-none focus:shadow-outline text-lg placeholder:text-[8px] sm:py-3 sm:px-2 sm:placeholder:text-sm sm:text-[10px]"
             value={category}
             onChange={categoryHandler}
             required
