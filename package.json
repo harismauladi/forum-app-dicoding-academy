@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "vitest --no-watch",
     "e2e": "cypress run",
-    "ci:test": "vitest run && start-server-and-test start http-get://localhost:5173 e2e",
+    "ci:test": "react-scripts test --watchAll=false && start-server-and-test start http-get://localhost:5173 e2e",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
