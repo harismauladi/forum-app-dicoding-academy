@@ -37,7 +37,7 @@ function asyncSetAuthUser({ email, password }) {
       dispatch(setAuthUserActionCreator(authUser));
       console.log(authUser);
     } catch (error) {
-      showAlert.alertMassage(error.massage);
+      showAlert.alertMassage(error.message);
     }
     dispatch(hideLoading());
   };
