@@ -13,10 +13,12 @@
 import React from "react";
 import userEvent from "@testing-library/user-event";
 import { screen, render } from "@testing-library/react";
+import {
+  describe, it, expect, vi,
+} from "vitest";
 import LikeButton from "../../elements/LikeButton";
-import { describe, it, expect, vi } from "vitest";
 
-//data dummy
+// data dummy
 let isVoted = false;
 const color = "#1d90f4";
 const className = "text-stone-300";
@@ -31,7 +33,7 @@ describe("LikeButton Component", () => {
         onVoteUp={onVoteUp}
         isVoteUp={isVoted}
         className={className}
-      />
+      />,
     );
 
     const voteUpButtonElement = screen.getByRole("button");
@@ -52,7 +54,7 @@ describe("LikeButton Component", () => {
         onVoteUp={onVoteUp}
         isVoteUp={isVoted}
         className={className}
-      />
+      />,
     );
 
     // action
@@ -74,7 +76,7 @@ describe("LikeButton Component", () => {
         onVoteUp={onVoteUp}
         isVoteUp={isVoted}
         className={className}
-      />
+      />,
     );
     const voteUpButtonElement = screen.getByRole("button");
     const svgElement = voteUpButtonElement.firstChild;
@@ -87,7 +89,7 @@ describe("LikeButton Component", () => {
         onVoteUp={onVoteUp}
         isVoteUp={isVoted}
         className={className}
-      />
+      />,
     );
 
     // assert

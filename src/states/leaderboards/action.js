@@ -1,9 +1,9 @@
-import { showLoading, hideLoading } from "react-redux-loading-bar";
-import API from "../../utils/api";
-import showAlert from "../../utils/alert";
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import API from '../../utils/api';
+import showAlert from '../../utils/alert';
 
 const ActionType = {
-  RECEIVE_LEADERBOARDS: "RECEIVE_LEADERBOARDS",
+  RECEIVE_LEADERBOARDS: 'RECEIVE_LEADERBOARDS',
 };
 
 function receiveLeaderboardsActionCreator(leaderboards) {

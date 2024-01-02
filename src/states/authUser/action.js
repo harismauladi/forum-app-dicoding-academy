@@ -1,10 +1,10 @@
-import API from "../../utils/api";
-import { showLoading, hideLoading } from "react-redux-loading-bar";
-import showAlert from "../../utils/alert";
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import API from '../../utils/api';
+import showAlert from '../../utils/alert';
 
 const ActionType = {
-  SET_AUTH_USER: "SET_AUTH_USER",
-  UNSET_AUTH_USER: "UNSET_AUTH_USER",
+  SET_AUTH_USER: 'SET_AUTH_USER',
+  UNSET_AUTH_USER: 'UNSET_AUTH_USER',
 };
 
 function setAuthUserActionCreator(authUser) {
@@ -35,7 +35,6 @@ function asyncSetAuthUser({ email, password }) {
       const authUser = await API.getOwnProfile();
 
       dispatch(setAuthUserActionCreator(authUser));
-      console.log(authUser);
     } catch (error) {
       showAlert.alertMassage(error.message);
     }
@@ -45,7 +44,7 @@ function asyncSetAuthUser({ email, password }) {
 function asyncUnsetAuthUser() {
   return (dispatch) => {
     dispatch(unsetAuthUserActionCreator());
-    API.putAccessToken("");
+    API.putAccessToken('');
   };
 }
 export {

@@ -19,12 +19,13 @@ function postedAt(date) {
   if (diffSeconds > 0) {
     return `${diffSeconds} seconds ago`;
   }
-  return "just now";
+  return 'just now';
 }
 
 function extractCategory(threads) {
   const category = new Set();
 
+  // eslint-disable-next-line array-callback-return
   threads.map((thread) => {
     category.add(thread.category);
   });

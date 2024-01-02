@@ -1,12 +1,12 @@
 const API = (() => {
-  const BASE_URL = "https://forum-api.dicoding.dev/v1";
+  const BASE_URL = 'https://forum-api.dicoding.dev/v1';
 
   function putAccessToken(token) {
-    localStorage.setItem("accessToken", token);
+    localStorage.setItem('accessToken', token);
   }
 
   function getAccessToken() {
-    return localStorage.getItem("accessToken");
+    return localStorage.getItem('accessToken');
   }
 
   async function fetchWithToken(url, options = {}) {
@@ -20,16 +20,16 @@ const API = (() => {
   }
   async function register({ name, email, password }) {
     const response = await fetch(`${BASE_URL}/register`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name, email, password }),
     });
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -41,9 +41,9 @@ const API = (() => {
   }
   async function login({ email, password }) {
     const response = await fetch(`${BASE_URL}/login`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({ email, password }),
     });
@@ -51,7 +51,7 @@ const API = (() => {
 
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -66,7 +66,7 @@ const API = (() => {
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -83,7 +83,7 @@ const API = (() => {
 
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -97,7 +97,7 @@ const API = (() => {
     const response = await fetch(`${BASE_URL}/threads`);
     const responseJson = await response.json();
     const { status, message } = responseJson;
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
     const {
@@ -107,11 +107,11 @@ const API = (() => {
     return threads;
   }
 
-  async function createThread({ title, body, category = "" }) {
+  async function createThread({ title, body, category = '' }) {
     const response = await fetchWithToken(`${BASE_URL}/threads`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         title,
@@ -124,7 +124,7 @@ const API = (() => {
 
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -141,7 +141,7 @@ const API = (() => {
 
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -155,17 +155,17 @@ const API = (() => {
     const response = await fetchWithToken(
       `${BASE_URL}/threads/${threadId}/comments`,
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ content }),
-      }
+      },
     );
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -179,13 +179,13 @@ const API = (() => {
   async function upVoteThreads(threadId) {
     const response = await fetchWithToken(
       `${BASE_URL}/threads/${threadId}/up-vote`,
-      { method: "POST" }
+      { method: 'POST' },
     );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -199,13 +199,13 @@ const API = (() => {
   async function neutralizeVoteThread(threadId) {
     const response = await fetchWithToken(
       `${BASE_URL}/threads/${threadId}/neutral-vote`,
-      { method: "POST" }
+      { method: 'POST' },
     );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -219,13 +219,13 @@ const API = (() => {
   async function downVoteThread(threadId) {
     const response = await fetchWithToken(
       `${BASE_URL}/threads/${threadId}/down-vote`,
-      { method: "POST" }
+      { method: 'POST' },
     );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -239,13 +239,13 @@ const API = (() => {
   async function upVoteComment({ threadId, commentId }) {
     const response = await fetchWithToken(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/up-vote`,
-      { method: "POST" }
+      { method: 'POST' },
     );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -259,13 +259,13 @@ const API = (() => {
   async function downVoteComment({ threadId, commentId }) {
     const response = await fetchWithToken(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/down-vote`,
-      { method: "POST" }
+      { method: 'POST' },
     );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -279,13 +279,13 @@ const API = (() => {
   async function neutralizeVoteComment({ threadId, commentId }) {
     const response = await fetchWithToken(
       `${BASE_URL}/threads/${threadId}/comments/${commentId}/neutral-vote`,
-      { method: "POST" }
+      { method: 'POST' },
     );
 
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 
@@ -301,7 +301,7 @@ const API = (() => {
     const responseJson = await response.json();
     const { status, message } = responseJson;
 
-    if (status !== "success") {
+    if (status !== 'success') {
       throw new Error(message);
     }
 

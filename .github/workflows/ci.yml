@@ -19,3 +19,4 @@ jobs:
         run: |
           npm install
           npm run ci:test
+          npm exec -- argos upload --token 3e3de74b76a8a36d8e4b328519d6b14845fa4e70  ./cypress/screenshots

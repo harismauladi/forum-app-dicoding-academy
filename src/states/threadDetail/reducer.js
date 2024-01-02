@@ -1,4 +1,4 @@
-import { ActionType } from "./action";
+import { ActionType } from './action';
 
 function threadDetailReducer(threadDetail = null, action = {}) {
   switch (action.type) {
@@ -14,7 +14,7 @@ function threadDetailReducer(threadDetail = null, action = {}) {
           : [...threadDetail.upVotesBy, action.payload.userId],
         downVotesBy: threadDetail.downVotesBy.includes(action.payload.userId)
           ? threadDetail.downVotesBy.filter(
-              (id) => id !== action.payload.userId
+              (id) => id !== action.payload.userId,
             )
           : threadDetail.downVotesBy,
       };
@@ -32,10 +32,10 @@ function threadDetailReducer(threadDetail = null, action = {}) {
       return {
         ...threadDetail,
         upVotesBy: threadDetail.upVotesBy.filter(
-          (id) => id !== action.payload.userId
+          (id) => id !== action.payload.userId,
         ),
         downVotesBy: threadDetail.downVotesBy.filter(
-          (id) => id !== action.payload.userId
+          (id) => id !== action.payload.userId,
         ),
       };
     case ActionType.ADD_COMMENTS:
@@ -55,7 +55,7 @@ function threadDetailReducer(threadDetail = null, action = {}) {
                 : [...comment.upVotesBy, action.payload.userId],
               downVotesBy: comment.downVotesBy.includes(action.payload.userId)
                 ? comment.downVotesBy.filter(
-                    (id) => id !== action.payload.userId
+                    (id) => id !== action.payload.userId,
                   )
                 : comment.downVotesBy,
             };
@@ -91,10 +91,10 @@ function threadDetailReducer(threadDetail = null, action = {}) {
             return {
               ...comment,
               upVotesBy: comment.upVotesBy.filter(
-                (id) => id !== action.payload.userId
+                (id) => id !== action.payload.userId,
               ),
               downVotesBy: comment.downVotesBy.filter(
-                (id) => id !== action.payload.userId
+                (id) => id !== action.payload.userId,
               ),
             };
           }

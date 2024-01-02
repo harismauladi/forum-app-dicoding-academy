@@ -1,11 +1,16 @@
+/* eslint-disable react/react-in-jsx-scope */
+import PropTypes from "prop-types";
 import Input from "../elements/Input";
 import LabelInput from "../elements/LabelInput";
-import PropTypes from "prop-types";
 
-function InputForm({ type, placeHolder, id, htmlFor, text, action, value }) {
+function InputForm({
+  type, placeHolder, id, htmlFor, text, action, value,
+}) {
   return (
     <div className="mb-2">
-      <LabelInput htmlFor={htmlFor}>{text}</LabelInput> <br />
+      <LabelInput htmlFor={htmlFor}>{text}</LabelInput>
+      {' '}
+      <br />
       <Input
         type={type}
         placeholder={placeHolder}

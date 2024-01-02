@@ -1,5 +1,7 @@
-import API from "../../utils/api";
+/* eslint-disable no-unused-expressions */
 import { hideLoading, showLoading } from "react-redux-loading-bar";
+import API from "../../utils/api";
+
 const ActionType = {
   RECEIVE_THREAD_DETAIL: "RECEIVE_THREAD_DETAIL",
   CLEAR_THREAD_DETAIL: "CLEAR_THREAD_DETAIL",
@@ -163,14 +165,14 @@ function asyncUpVoteComment({ threadId, commentId, isVoteDown }) {
     } catch (erorr) {
       isVoteDown
         ? dispatch(
-            downVoteCommentActionCreator({ commentId, userId: authUser.id })
-          )
+          downVoteCommentActionCreator({ commentId, userId: authUser.id }),
+        )
         : dispatch(
-            neutralizeVoteCommentActionCreator({
-              commentId,
-              userId: authUser.id,
-            })
-          );
+          neutralizeVoteCommentActionCreator({
+            commentId,
+            userId: authUser.id,
+          }),
+        );
       alert(erorr.massage);
     }
     dispatch(hideLoading);
@@ -188,14 +190,14 @@ function asyncDownVoteComment({ threadId, commentId, isVoteUp }) {
     } catch (erorr) {
       isVoteUp
         ? dispatch(
-            upVoteCommentActionCreator({ commentId, userId: authUser.id })
-          )
+          upVoteCommentActionCreator({ commentId, userId: authUser.id }),
+        )
         : dispatch(
-            neutralizeVoteCommentActionCreator({
-              commentId,
-              userId: authUser.id,
-            })
-          );
+          neutralizeVoteCommentActionCreator({
+            commentId,
+            userId: authUser.id,
+          }),
+        );
       alert(erorr.massage);
     }
   };
@@ -206,7 +208,7 @@ function asyncNeutralizeVoteComment({ threadId, commentId, isVoteUp = false }) {
     const { authUser } = getState();
 
     dispatch(
-      neutralizeVoteCommentActionCreator({ commentId, userId: authUser.id })
+      neutralizeVoteCommentActionCreator({ commentId, userId: authUser.id }),
     );
 
     try {
@@ -214,14 +216,14 @@ function asyncNeutralizeVoteComment({ threadId, commentId, isVoteUp = false }) {
     } catch (erorr) {
       isVoteUp
         ? dispatch(
-            upVoteCommentActionCreator({ commentId, userId: authUser.id })
-          )
+          upVoteCommentActionCreator({ commentId, userId: authUser.id }),
+        )
         : dispatch(
-            downVoteCommentActionCreator({
-              commentId,
-              userId: authUser.id,
-            })
-          );
+          downVoteCommentActionCreator({
+            commentId,
+            userId: authUser.id,
+          }),
+        );
       alert(erorr.massage);
     }
   };
