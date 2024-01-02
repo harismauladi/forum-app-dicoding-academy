@@ -7,15 +7,17 @@
  */
 
 import { hideLoading, showLoading } from "react-redux-loading-bar";
+import {
+  describe, it, expect, beforeEach, vi, afterEach,
+} from "vitest";
 import API from "../../../utils/api";
 import {
   asyncSetAuthUser,
   setAuthUserActionCreator,
 } from "../../../states/authUser/action";
-import { describe, it, expect, beforeEach, vi, afterEach } from "vitest";
 import showAlert from "../../../utils/alert";
 
-//data dummy
+// data dummy
 
 const fakeLoginResponse = "test-token";
 const fakeErorResponse = new Error("Fetch Api failed");
@@ -36,7 +38,7 @@ describe("asyncSetAuthUser Thunk Function Test", () => {
   });
 
   it(" should dispatch action correctly when api login success", async () => {
-    //arrange
+    // arrange
     API.login.mockResolvedValue(fakeLoginResponse);
     API.getOwnProfile.mockResolvedValue(user);
 
@@ -46,12 +48,12 @@ describe("asyncSetAuthUser Thunk Function Test", () => {
     const spyOnAlertEror = vi.spyOn(showAlert, "alertMassage");
     const dispatch = vi.fn();
 
-    //action
+    // action
     await asyncSetAuthUser({ email: user.email, password: "password" })(
-      dispatch
+      dispatch,
     );
 
-    //assert
+    // assert
     expect(dispatch).toBeCalledWith(showLoading());
     expect(spyOnLoginAPI).toBeCalledWith({
       email: user.email,
@@ -65,7 +67,7 @@ describe("asyncSetAuthUser Thunk Function Test", () => {
   });
 
   it("should call alert when api erorr", async () => {
-    //arrange
+    // arrange
     API.login.mockRejectedValue(fakeErorResponse);
 
     const spyOnAlertEror = vi.spyOn(showAlert, "alertMassage");
@@ -74,12 +76,12 @@ describe("asyncSetAuthUser Thunk Function Test", () => {
     const spyOnGetUserProfile = vi.spyOn(API, "getOwnProfile");
     const dispatch = vi.fn();
 
-    //action
+    // action
     await asyncSetAuthUser({ email: user.email, password: "password" })(
-      dispatch
+      dispatch,
     );
 
-    //assert
+    // assert
     expect(dispatch).toBeCalledWith(showLoading());
     expect(spyOnLoginAPI).toBeCalledWith({
       email: user.email,

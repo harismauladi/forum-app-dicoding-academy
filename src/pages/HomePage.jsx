@@ -1,16 +1,17 @@
-import React, { useEffect } from "react";
-import CardContainer from "../layouts/CardContainer";
-import HotIssueContainer from "../layouts/HotIssueContainer";
-import { useDispatch, useSelector } from "react-redux";
-import { asyncPopulateUsersAndThreads } from "../states/shared/action";
-import { setCategoryActionCreator } from "../states/categorys/action";
-import { extractCategory } from "../utils";
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import CardContainer from '../layouts/CardContainer';
+import HotIssueContainer from '../layouts/HotIssueContainer';
+import { asyncPopulateUsersAndThreads } from '../states/shared/action';
+import { setCategoryActionCreator } from '../states/categorys/action';
+import { extractCategory } from '../utils';
 
 function HomePage() {
   const {
     threads = [],
     users = [],
-    category = "",
+    category = '',
     authUser,
   } = useSelector((states) => states);
 
@@ -26,7 +27,7 @@ function HomePage() {
   }, [dispatch]);
 
   const filterThread = threads.filter(
-    (thread) => thread.category === category || category === ""
+    (thread) => thread.category === category || category === '',
   );
 
   const threadList = filterThread.map((thread) => ({
@@ -36,16 +37,14 @@ function HomePage() {
   }));
 
   return (
-    <React.Fragment>
-      <section className="overflow-x-hidden">
-        <HotIssueContainer
-          categoryChangeHandler={onChangeCategory}
-          categories={categoryList}
-          currentCategory={category}
-        />
-        <CardContainer threadList={threadList} />
-      </section>
-    </React.Fragment>
+    <section className="overflow-x-hidden">
+      <HotIssueContainer
+        categoryChangeHandler={onChangeCategory}
+        categories={categoryList}
+        currentCategory={category}
+      />
+      <CardContainer threadList={threadList} />
+    </section>
   );
 }
 

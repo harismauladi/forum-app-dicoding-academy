@@ -5,10 +5,19 @@
     "node": true,
     "cypress/globals": true
   },
-  "extends": "airbnb",
+  "extends": ["plugin:react/recommended", "airbnb","prettier"],
   "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "rules": {}
+  "plugins": ["react", "cypress"],
+  "rules": { 
+    "quotes" : "off",
+    "no-alert":"off",
+    "react/jsx-no-useless-fragment":"off"
+    
+  }
 }

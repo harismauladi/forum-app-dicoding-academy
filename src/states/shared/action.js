@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+import { hideLoading, showLoading } from "react-redux-loading-bar";
 import API from "../../utils/api";
 import { neutralizeVoteThreadDetailActionCreator } from "../threadDetail/action";
 import {
@@ -7,7 +9,6 @@ import {
   upVoteThreadActionCreator,
 } from "../threads/action";
 import { receiveUsersActionCreator } from "../users/action";
-import { hideLoading, showLoading } from "react-redux-loading-bar";
 
 function asyncPopulateUsersAndThreads() {
   return async (dispatch) => {
@@ -30,7 +31,7 @@ function asyncNeutralizeVoteThread({ threadId, isVoteUp = false }) {
     const { authUser, threadDetail } = getState();
 
     dispatch(
-      neutralizeVoteThreadActionCreator({ threadId, userId: authUser.id })
+      neutralizeVoteThreadActionCreator({ threadId, userId: authUser.id }),
     );
 
     if (threadDetail !== null) {
@@ -43,14 +44,14 @@ function asyncNeutralizeVoteThread({ threadId, isVoteUp = false }) {
       isVoteUp
         ? dispatch(upVoteThreadActionCreator({ threadId, userId: authUser.id }))
         : dispatch(
-            downVoteThreadActionCreator({ threadId, userId: authUser.id })
-          );
+          downVoteThreadActionCreator({ threadId, userId: authUser.id }),
+        );
 
       threadDetail !== null && isVoteUp
         ? dispatch(upVoteThreadActionCreator({ threadId, userId: authUser.id }))
         : dispatch(
-            downVoteThreadActionCreator({ threadId, userId: authUser.id })
-          );
+          downVoteThreadActionCreator({ threadId, userId: authUser.id }),
+        );
       alert(erorr.message);
     }
   };

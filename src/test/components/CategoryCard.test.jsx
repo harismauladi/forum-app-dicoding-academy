@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 /**
  * Scenario test
  *
@@ -11,22 +10,24 @@
  */
 
 // eslint-disable-next-line no-unused-vars
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import CategoryCard from "../../fragments/CategoryCard";
-import { vi } from "vitest";
-import userEvent from "@testing-library/user-event";
-import { describe, it, expect } from "vitest";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import {
+  describe, it, expect, vi,
+} from 'vitest';
+import CategoryCard from '../../fragments/CategoryCard';
 
-//data dummy
-const category = "dummy";
+// data dummy
+const category = 'dummy';
 
-describe("CategoryCard Component", () => {
-  it("should toggle background color when user clicked", async () => {
-    //arrange
-    let currentCategory = "set";
+describe('CategoryCard Component', () => {
+  it('should toggle background color when user clicked', async () => {
+    // arrange
+    let currentCategory = 'set';
+    // eslint-disable-next-line no-shadow
     const onChangeCategoryHandler = vi.fn().mockImplementation((category) => {
-      currentCategory = currentCategory === category ? "" : category;
+      currentCategory = currentCategory === category ? '' : category;
     });
 
     const { rerender } = render(
@@ -34,12 +35,12 @@ describe("CategoryCard Component", () => {
         categoryName={category}
         categoryChangeHandler={onChangeCategoryHandler}
         currentCategory={currentCategory}
-      />
+      />,
     );
 
-    const button = screen.getByRole("button");
+    const button = screen.getByRole('button');
 
-    //action
+    // action
     await userEvent.click(button);
 
     rerender(
@@ -47,12 +48,12 @@ describe("CategoryCard Component", () => {
         categoryName={category}
         categoryChangeHandler={onChangeCategoryHandler}
         currentCategory={currentCategory}
-      />
+      />,
     );
 
-    //assert
+    // assert
 
-    expect(button).toHaveClass("bg-slate-50");
+    expect(button).toHaveClass('bg-slate-50');
 
     await userEvent.click(button);
 
@@ -61,13 +62,13 @@ describe("CategoryCard Component", () => {
         categoryName={category}
         categoryChangeHandler={onChangeCategoryHandler}
         currentCategory={currentCategory}
-      />
+      />,
     );
 
-    expect(button).not.toHaveClass("bg-slate-50");
+    expect(button).not.toHaveClass('bg-slate-50');
   });
 
-  it("should render category name correctly", () => {
+  it('should render category name correctly', () => {
     // arrange
     const onCategoryChangeHandler = vi.fn();
 
@@ -76,17 +77,17 @@ describe("CategoryCard Component", () => {
         categoryName={category}
         categoryChangeHandler={onCategoryChangeHandler}
         currentCategory=""
-      />
+      />,
     );
 
     // action
-    const categoryButton = screen.getByRole("button");
+    const categoryButton = screen.getByRole('button');
 
     // assert
     expect(categoryButton).toHaveTextContent(category);
   });
 
-  it("should call the category change handler", async () => {
+  it('should call the category change handler', async () => {
     // arrange
     const onCategoryChangeHandler = vi.fn();
 
@@ -95,10 +96,10 @@ describe("CategoryCard Component", () => {
         categoryName={category}
         categoryChangeHandler={onCategoryChangeHandler}
         currentCategory=""
-      />
+      />,
     );
 
-    const categoryButton = screen.getByRole("button");
+    const categoryButton = screen.getByRole('button');
 
     // action
     await userEvent.click(categoryButton);

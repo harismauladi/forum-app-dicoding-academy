@@ -1,12 +1,13 @@
-import React from "react";
+// eslint-disable-next-line no-unused-vars
+import React from 'react';
 
-import LeaderBoards from "../layouts/LeaderBoards";
+import LeaderBoards from '../layouts/LeaderBoards';
 
 function LeaderboardPage() {
   return (
-    <React.Fragment>
+    <>
       <LeaderBoards />
-    </React.Fragment>
+    </>
   );
 }
 

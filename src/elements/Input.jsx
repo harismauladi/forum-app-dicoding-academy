@@ -1,7 +1,11 @@
+/* eslint-disable react/require-default-props */
 import PropTypes from "prop-types";
 
-function Input({ type, placeholder, id, action, value }) {
+function Input({
+  type, placeholder, id, action, value,
+}) {
   return (
+    // eslint-disable-next-line react/react-in-jsx-scope
     <input
       type={type}
       placeholder={placeholder}

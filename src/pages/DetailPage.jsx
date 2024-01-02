@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
-import DetailDiscuss from "../fragments/DetailDiscuss";
-import Comment from "../fragments/Comment";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+/* eslint-disable react/jsx-no-bind */
+// eslint-disable-next-line no-unused-vars
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import DetailDiscuss from '../fragments/DetailDiscuss';
+import Comment from '../fragments/Comment';
 import {
   asyncDownVoteThreadDetail,
   asyncReceiveThreadDetail,
   asyncUpVoteThreadDetail,
-} from "../states/threadDetail/action";
-import { asyncNeutralizeVoteThread } from "../states/shared/action";
-import NotFound from "./NotFound";
+} from '../states/threadDetail/action';
+import { asyncNeutralizeVoteThread } from '../states/shared/action';
+import NotFound from './NotFound';
 
 function DetailPage() {
   const { id } = useParams();
@@ -22,9 +24,10 @@ function DetailPage() {
     dispatch(asyncReceiveThreadDetail(id));
   }, [id, dispatch]);
 
+  // eslint-disable-next-line consistent-return
   function onUpVoteThreadDetail() {
     if (authUser.null) {
-      throw new Error("Please Re-Login or Login First");
+      throw new Error('Please Re-Login or Login First');
     }
     if (isVoteUp) {
       return dispatch(asyncNeutralizeVoteThread({ threadId: id, isVoteUp }));
@@ -33,9 +36,10 @@ function DetailPage() {
     dispatch(asyncUpVoteThreadDetail(isVoteDown));
   }
 
+  // eslint-disable-next-line consistent-return
   function onDownVoteThreadDetail() {
     if (authUser.null) {
-      throw new Error("Please Re-Login or Login First");
+      throw new Error('Please Re-Login or Login First');
     }
 
     if (isVoteDown) {
@@ -50,19 +54,17 @@ function DetailPage() {
   }
 
   return (
-    <React.Fragment>
-      <section className="my-32 flex flex-col justify-center items-center p-3">
-        <DetailDiscuss
-          thread={threadDetail}
-          onUpVoteThreadDetail={onUpVoteThreadDetail}
-          onDownVoteThreadDetail={onDownVoteThreadDetail}
-          isVoteUp={isVoteUp}
-          isVoteDown={isVoteDown}
-        />
+    <section className="my-32 flex flex-col justify-center items-center p-3">
+      <DetailDiscuss
+        thread={threadDetail}
+        onUpVoteThreadDetail={onUpVoteThreadDetail}
+        onDownVoteThreadDetail={onDownVoteThreadDetail}
+        isVoteUp={isVoteUp}
+        isVoteDown={isVoteDown}
+      />
 
-        <Comment comments={threadDetail.comments} threadId={id} />
-      </section>
-    </React.Fragment>
+      <Comment comments={threadDetail.comments} threadId={id} />
+    </section>
   );
 }
 

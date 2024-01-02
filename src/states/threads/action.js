@@ -1,11 +1,12 @@
-import API from "../../utils/api";
-import { hideLoading, showLoading } from "react-redux-loading-bar";
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import API from '../../utils/api';
+
 const ActionType = {
-  RECEIVE_THREADS: "RECEIVE_THREADS",
-  ADD_THREADS: "ADD_THREADS",
-  UP_VOTE_THREAD: "UP_VOTE_THREAD",
-  DOWN_VOTE_THREAD: "DOWN_VOTE_THREAD",
-  NEUTRALIZE_VOTE_THREAD: "NEUTRALIZE_VOTE_THREAD",
+  RECEIVE_THREADS: 'RECEIVE_THREADS',
+  ADD_THREADS: 'ADD_THREADS',
+  UP_VOTE_THREAD: 'UP_VOTE_THREAD',
+  DOWN_VOTE_THREAD: 'DOWN_VOTE_THREAD',
+  NEUTRALIZE_VOTE_THREAD: 'NEUTRALIZE_VOTE_THREAD',
 };
 
 function receiveThreadsActionCreator(threads) {
@@ -79,12 +80,13 @@ function asyncUpVoteThread({ threadId, isVoteDown }) {
     } catch (erorr) {
       if (isVoteDown) {
         dispatch(
-          downVoteThreadActionCreator({ userId: authUser.id, threadId })
+          downVoteThreadActionCreator({ userId: authUser.id, threadId }),
         );
-      } else
+      } else {
         dispatch(
-          neutralizeVoteThreadActionCreator({ userId: authUser.id, threadId })
+          neutralizeVoteThreadActionCreator({ userId: authUser.id, threadId }),
         );
+      }
 
       alert(erorr.message);
     }
@@ -102,10 +104,11 @@ function asyncDownVoteThread({ threadId, isVoteUp }) {
     } catch (erorr) {
       if (isVoteUp) {
         dispatch(upVoteThreadActionCreator({ userId: authUser.id, threadId }));
-      } else
+      } else {
         dispatch(
-          neutralizeVoteThreadActionCreator({ userId: authUser.id, threadId })
+          neutralizeVoteThreadActionCreator({ userId: authUser.id, threadId }),
         );
+      }
 
       alert(erorr.message);
     }
