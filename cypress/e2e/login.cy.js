@@ -22,7 +22,7 @@ describe('Login Spec', () => {
     cy.get("input[placeHolder='username@gmail.com']").should('be.visible');
     cy.get("input[placeHolder='*****']").should('be.visible');
     cy.get('button').contains('Login').should('be.visible');
-    cy.argosScreenshot("homepage");
+    cy.argosScreenshot("login");
   });
   // it('should display alert when email is empty', () => {
   //   cy.get('button').contains('Login').click();
