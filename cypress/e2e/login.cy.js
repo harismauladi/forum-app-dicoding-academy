@@ -39,6 +39,7 @@ describe('Login Spec', () => {
     cy.on('window:alert', (msg) => {
       expect(msg).to.contain('password cant be empty');
     });
+    
   });
 
   it('should display homepage when email and password are correct', () => {
